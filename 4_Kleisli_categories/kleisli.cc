@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+
 using namespace std;
 
 template<typename A> class optional {
