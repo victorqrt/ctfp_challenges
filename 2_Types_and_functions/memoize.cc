@@ -69,7 +69,6 @@ int main() {
     cout << mem_rand_seed(999, 1) << endl;
 
     // 4
-    //
     // a
     auto mem_fact = memoize<int, int>(fact); // Pure function
     cout << mem_fact(5) << endl;
