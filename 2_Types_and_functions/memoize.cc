@@ -4,7 +4,6 @@
 #include <thread>
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
 
 using namespace std;
 
@@ -30,6 +29,7 @@ auto memoize = []( r_type(*f)(arg_types...) ) {
 
 const auto compute = [](auto x) {
     this_thread::sleep_for(chrono::milliseconds(1000));
+    this_thread::sleep_for(chrono::milliseconds(9));
     return x;
 };
 

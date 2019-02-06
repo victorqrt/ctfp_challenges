@@ -16,29 +16,39 @@ This gives us infinetely many arrows from the node to itself.
 
 ## 2.
 ### a)
-A ∈ B and B ∈ A => B = A so this is a partial order. No total order as there may not be a relation between any two sets.
+We have antisymmetry: `A ∈ B and B ∈ A => B = A` so this is a partial order. No total order as there may not be a relation between any two sets.
 
 ### b)
 Let R be said relation, R is a preorder as it is reflexive and transitive. No preorder though, as if t1 and t2 are pointers to T1 and T2, respectively, t1 R t2 and t2 R t1 does not imply t1 = t2 (casting a pointer to a base class is implicit).
 
 ## 3.
 ### &&
-∀ (a,b,c) ∈ Bool³, (a && b) && c = a && (b && c), && is associative.
-∀ a ∈ Bool, a && True = True && a = a, True is neutral for &&.
+`∀ (a,b,c) ∈ Bool³, (a && b) && c = a && (b && c)`, && is associative.
+
+`∀ a ∈ Bool, a && True = True && a = a`, True is neutral for &&.
 Therefore, the Bool set with && is a monoid as set.
 
 ### ||
-∀ (a,b,c) ∈ Bool³, (a || b) || c = a || (b || c), || is associative.
-∀ a ∈ Bool, a || False = False || a = a, False is neutral for ||.
+`∀ (a,b,c) ∈ Bool³, (a || b) || c = a || (b || c)`, || is associative.
+
+`∀ a ∈ Bool, a || False = False || a = a`, False is neutral for ||.
 Therefore, the Bool set with || is a monoid as set.
 
 ## 4.
 AND True is identity. AND False is "never".
 
 ## 5.
-Three morphisms:
+We have three morphisms:
 - (+ 0 mod 3) is 'zero'
 - (+ 1 mod 3) is 'one'
 - (+ 2 mod 3) is 'two'
 
-'zero' is identity. 'one' . 'one' is 'two', 'one' . 'two' is identity, 'two' . 'two' is 'one'.
+And the composition rules:
+
+'zero' is identity.
+
+'one' . 'one' is 'two'
+
+'one' . 'two' is identity
+
+'two' . 'two' is 'one'.
