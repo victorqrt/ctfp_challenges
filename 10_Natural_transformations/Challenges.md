@@ -45,3 +45,59 @@ alpha (Reader _) = Nothing
 beta :: Reader Bool a -> Maybe a
 beta (Reader g) = Just (g True)
 ```
+
+## 4.
+Let us define four functors `F, G, F', G'`, two objects `a, b`, one morphism `f :: a -> b` and
+two natural transformations `alpha` and `beta` such that:
+```Haskell
+alpha_a :: F a -> F' a
+alpha_b :: F b -> F' b
+
+beta_a :: G a -> G' a
+beta_b :: G b -> G' b
+
+-- In essence:
+-- "alpha F = F'"
+-- "beta G = G'"
+```
+
+The horizontal composition of `beta` and `alpha` is a morphism `(beta ◦ alpha) :: G . F -> G' . F'`. Let us prove the naturality condition for the horizontal composition of `alpha` and `beta`:
+```
+(beta ◦ alpha)_b . (G . F) f = (beta_F'b . G_alpha_b) . G . F f
+
+                             = beta_F'b . G . F'f . alpha_a
+
+                             = (G' . F') . (beta ◦ alpha)_a
+```
+And the naturality condition holds for `(beta ◦ alpha)`.
+
+## 5.
+A diagram for the proof of the interchange law on horisontal composition of natural transformations would be similar to the third of the 10.4 section, except we need to introduce
+two more functors (destinations for `alpha'` and `beta'`). We would then, as said Saunders Mac Lane, have a very good time putting colors on our edges to show the paths are equivalent.
+
+## 6.
+Let us define, for instance:
+```Haskell
+newtype Op r a = Op (a -> r)
+instance Contravariant Op r where
+    contramap f (Op g) = Op (g . f)
+
+op :: Op Bool Int
+op = Op (\x -> x > 0)
+
+f :: String -> Int
+f x = read x
+
+alpha :: Op Bool a -> Op String a
+alpha (Op f) = Op (\x -> if f x "T" else "F")
+```
+
+We have:
+```
+contramap f . alpha (op)
+    = contramap f (Op (\x -> if x > 0 then "T" else "F"))
+    = Op (\x -> if (read x) > 0 then "T" else "F")
+    = alpha (Op (\x -> (read x) > 0))
+    = alpha . contramap f (Op (\x -> x > 0))
+    = alpha . contramap f (op)
+```
