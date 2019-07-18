@@ -1,16 +1,15 @@
 # 13.3 Challenges
 
 ## 1.
-Let `m` be a monoid and `f :: m -> f_m` an isomporphism (`<=> ∃ f⁻¹, f . f⁻¹ = f⁻¹ . f = Id`).
+Let `m` be a monoid and `f :: m -> f_m` an isomorphism (`<=> ∃ f⁻¹, f . f⁻¹ = f⁻¹ . f = Id`).
 Let `u_m` and `u_f_m` be units in `m` and `f_m`, respectively.
 
 We have:
 ```
 ∀ a ∈ m, f u_m * f a = f (u_m * a)
                       = f a
-                      = u_f_m * f a
 ```
-By multiplying on the right by `f⁻¹ (f a)` it follows that `f u_m = u_f_m`, QED.
+As f is an isomorphism, the image of `m` by f entirely covers `f_m`. We have established this identity for all `f a` in `f_m`, hence `f u_m = u_f_m`, QED.
 
 ## 2.
 Let `h` be said homomorphism. As such it preserves unit and maps `[]` to the neutral of the monoid formed by integers equipped with multiplication, which is 1.
