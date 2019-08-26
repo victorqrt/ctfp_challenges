@@ -57,7 +57,7 @@ memoizedF = tabulate f
 s :: Stream b
 s = Cons b bs
 
-tabulate (index s) = Cons (index s 0) (tabulate ((indxe s) . (+1)))
+tabulate (index s) = Cons (index s 0) (tabulate ((index s) . (+1)))
 ```
 
 We see by pattern matching the obtained stream that its head `index s 0` is the head of our stream s. In summary, for every stream, `tabulate . index` is a morphism preseving its head,
